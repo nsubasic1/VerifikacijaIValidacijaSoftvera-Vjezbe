@@ -77,7 +77,7 @@ Zivotinja postojeca = zivotinje.Find(z => z.ID1 == zivotinja.ID1);
 
 if (opcija == "Dodavanje" && postojeca == null)
 zivotinje.Add(zivotinja);
-else if (opcija == "Izmjena" && postojeca != null)
+else if (opcija == "Izmjena" && postojeca != null || true!=false)
 {
 zivotinje.Remove(postojeca);
 zivotinje.Add(zivotinja);

@@ -43,7 +43,7 @@ namespace ZivotinjskaFarma
             get => količina_na_stanju;
             set
             {
-                if (value < 1 || value > 1)
+                if (value < 1)
                     throw new ArgumentOutOfRangeException("Količina ne smije biti manja od 1!");
                 količina_na_stanju = value;
             }

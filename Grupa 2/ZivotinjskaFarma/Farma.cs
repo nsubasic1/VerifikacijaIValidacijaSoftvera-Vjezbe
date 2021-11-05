@@ -92,7 +92,7 @@ throw new ArgumentException("Životinja je već registrovana u bazi!");
 
 public void DodavanjeNoveLokacije(Lokacija lokacija)
 {
-if (lokacije.Any(l => l == lokacija))
+if (lokacije.Contains(lokacija)
 throw new InvalidOperationException("Ista lokacija je već zabilježena!");
 lokacije.Add(lokacija);
 }

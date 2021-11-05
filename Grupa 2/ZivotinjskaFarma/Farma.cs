@@ -72,6 +72,7 @@ kupovine = new List<Kupovina>();
 
 public void RadSaZivotinjama(string opcija, Zivotinja zivotinja)
 {
+throw new Exception("GREŠKA");
 Zivotinja postojeca = zivotinje.Find(z => z.ID1 == zivotinja.ID1);
 
 if (opcija == "Dodavanje" && postojeca == null)

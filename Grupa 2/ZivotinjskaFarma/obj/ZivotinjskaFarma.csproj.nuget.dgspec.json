@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ehlimana\\Desktop\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj": {}
+    "C:\\Users\\Nejla\\Documents\\GitHub\\VerifikacijaIValidacijaSoftvera-Vjezbe\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ehlimana\\Desktop\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj": {
+    "C:\\Users\\Nejla\\Documents\\GitHub\\VerifikacijaIValidacijaSoftvera-Vjezbe\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ehlimana\\Desktop\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj",
+        "projectUniqueName": "C:\\Users\\Nejla\\Documents\\GitHub\\VerifikacijaIValidacijaSoftvera-Vjezbe\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj",
         "projectName": "ZivotinjskaFarma",
-        "projectPath": "C:\\Users\\Ehlimana\\Desktop\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj",
-        "packagesPath": "C:\\Users\\Ehlimana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ehlimana\\Desktop\\Grupa 2\\ZivotinjskaFarma\\obj\\",
+        "projectPath": "C:\\Users\\Nejla\\Documents\\GitHub\\VerifikacijaIValidacijaSoftvera-Vjezbe\\Grupa 2\\ZivotinjskaFarma\\ZivotinjskaFarma.csproj",
+        "packagesPath": "C:\\Users\\Nejla\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nejla\\Documents\\GitHub\\VerifikacijaIValidacijaSoftvera-Vjezbe\\Grupa 2\\ZivotinjskaFarma\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Ehlimana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nejla\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -31,8 +31,6 @@ namespace ZivotinjskaFarma
                 if (!podržaneVrste.Contains(value))
                     throw new InvalidOperationException("Unijeli ste vrstu proizvoda koja ne postoji!");
                 vrsta = value;
-
-                throw new InvalidOperationException("Unijeli ste vrstu proizvoda koja ne postoji!");
             }
         }
         public Zivotinja Proizvođač { get => proizvođač; set => proizvođač = value; }

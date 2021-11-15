@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Cvjecara
 
         public List<Cvijet> Cvijeće { get => cvijeće; }
         public List<Poklon> NaručeniPokloni { get => naručeniPokloni; set => naručeniPokloni = value; }
+        public List<Mušterija> Mušterije { get => mušterije; set => mušterije = value; }
 
         #endregion
 

@@ -73,7 +73,7 @@ namespace Cvjecara
             get => kolicina;
             set
             {
-                if (value < 1)
+                if (value < 0)
                     throw new FormatException("Količina ne može biti manja od 1!");
                 kolicina = value;
             }

@@ -126,7 +126,40 @@ namespace Cvjecara
         /// <returns></returns>
         public double OdrediSvježinuCvijeća()
         {
-            throw new NotImplementedException();
+            double k;
+            switch (vrsta)
+            {
+                case Vrsta.Ruža:
+                    k = 0.2;
+                    break;
+                case Vrsta.Neven:
+                    k = 0.3;
+                    break;
+                case Vrsta.Margareta:
+                    k = 0.4;
+                    break;
+                case Vrsta.Orhideja:
+                    k = 0.5;
+                    break;
+                default:
+                    k = 0.6;
+                    break;
+            }
+
+            int br_dana = (DateTime.Now - datumBranja).Days;
+            if(br_dana < 3) return 5.0;
+            br_dana = br_dana - 3;
+            int k1 = 1;
+            double svjezina = 5;
+            while(br_dana > 0)
+            {
+                svjezina -= k1 * k;
+                k1++;
+                br_dana--;
+                if(svjezina < 0) return 0;
+            }
+            return svjezina;
+
         }
 
         #endregion

@@ -80,7 +80,41 @@ namespace Cvjecara
         /// <returns></returns>
         public bool NagradnaKupovina(Poklon nagrada)
         {
-            throw new NotImplementedException();
+            //Uradila Kanita 
+            //Provjeriti tip izuzetaka
+            if (nagrada == null) 
+            { 
+                throw new NotSupportedException("Nagrada se mora navesti!");
+                return false;
+            }
+
+            if (ukupanBrojKupovina < 100)
+            {
+                throw new InvalidOperationException("Ukupan broj kupovina je manji od 100");
+                return false;
+            }
+
+            double stepen = 2;
+            while(Math.Pow(10,stepen) < ukupanBrojKupovina)
+            {
+                stepen++;
+            }
+
+            if(Math.Pow(10,stepen) != ukupanBrojKupovina)
+            {
+                throw new InvalidOperationException("Ukupan broj kupovina nije stepen broja 10");
+                return false;
+            }
+
+            if((stepen - 1)*10 < nagrada.PostotakPopusta)
+            {
+                throw new InvalidOperationException("Postotak od nagrade ne odgovara obavljenom ukupnom broju kupovina");
+                return false;
+            }
+            //Provjeriti da li niz kupljenih poklona treba imati element nagrada kao dodatni element
+            kupljeniPokloni.Add(nagrada);
+
+            return true;
         }
 
         #endregion

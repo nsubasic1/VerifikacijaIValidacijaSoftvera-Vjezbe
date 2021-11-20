@@ -149,7 +149,7 @@ namespace Cvjecara
 
             int br_dana = (DateTime.Now - datumBranja).Days;
             if(br_dana < 3) return 5.0;
-            br_dana = br_dana - 3;
+            br_dana = br_dana - 2;
             int k1 = 1;
             double svjezina = 5;
             while(br_dana > 0)

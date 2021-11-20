@@ -126,6 +126,7 @@ namespace Cvjecara
         /// <returns></returns>
         public double OdrediSvježinuCvijeća()
         {
+            //Radila Nejla
             double k;
             switch (vrsta)
             {

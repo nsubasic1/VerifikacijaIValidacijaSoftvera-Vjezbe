@@ -194,9 +194,9 @@ namespace Cvjecara
             if(br_musterija==1) {
                 return najbolje_musterije.ElementAt(0);
             }
-            //ako ima vise musterija sa istim brojem cvijeca onda trazimo onu musteriju
+            //ako ima vise od jedne musterije sa istim brojem cvijeca onda trazimo onu musteriju
             //koja je potrosila najvise novca na sve kupljene bukete
-            else if(br_musterija>0) {
+            else if(br_musterija>1) {
             int max_cijena=0;
                 foreach(Musterija musterija in najbolje_musterije) {
                     int cijena_buketa=0;

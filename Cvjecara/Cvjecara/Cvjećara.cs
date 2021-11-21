@@ -161,7 +161,7 @@ namespace Cvjecara
         /// <returns></returns>
         public Mušterija DajNajboljuMušteriju()
         {
-            throw new NotImplementedException();
+           
         }
 
         #endregion

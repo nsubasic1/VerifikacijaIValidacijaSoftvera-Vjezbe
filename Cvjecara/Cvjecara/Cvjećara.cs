@@ -114,15 +114,16 @@ namespace Cvjecara
             switch (godišnjeDoba)
             {
                 case "Proljeće":
-                    cvijeće.Clear();
-                    buketi.Clear();
+                    cvijeće.RemoveAll(c => c.Vrsta == Vrsta.Ruža || c.Vrsta == Vrsta.Orhideja);
+                    buketi.RemoveAll(b => b.Cvijeće.Any(c => c.Vrsta == Vrsta.Ruža || c.Vrsta == Vrsta.Orhideja));
                     cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
                     cvijeće.Add(new Cvijet(Vrsta.Neven, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
                     cvijeće.Add(new Cvijet(Vrsta.Margareta, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
                     break;
                 case "Jesen":
-                    cvijeće.Clear();
-                    buketi.Clear();
+                    
+                    cvijeće.RemoveAll(c => c.Vrsta != Vrsta.Ruža && c.Vrsta != Vrsta.Orhideja);
+                    buketi.RemoveAll(b => b.Cvijeće.Any(c => c.Vrsta == Vrsta.Ljiljan || c.Vrsta == Vrsta.Neven || c.Vrsta == Vrsta.Margareta));
                     cvijeće.Add(new Cvijet(Vrsta.Ruža, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
                     cvijeće.Add(new Cvijet(Vrsta.Orhideja, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
                     break;

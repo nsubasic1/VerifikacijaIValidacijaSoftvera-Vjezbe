@@ -185,17 +185,18 @@ namespace Cvjecara
         /// jer se najbolja mušterija u tom slučaju ne može tačno odrediti.
         /// </summary>
         /// <returns></returns>
-        public Mušterija DajNajboljuMušteriju()
+       public Mušterija DajNajboljuMušteriju()
         {
-           //radila Medina 
-            if(musterije.Count()==0) {
+            Mušterija najbolja_musterija = null;
+            //radila Medina 
+            if (mušterije.Count()==0) {
                 throw new NotImplementedException("Cvjecara nema nijednu musteriju!");
             }
 
             //prvo pronalazim koliko je maksimalan broj cvijeca u buketu
             int max_cvijeca=0;
             int br_cvijeca;
-            foreach(Mušterija musterija in musterije) {
+            foreach(Mušterija musterija in mušterije) {
                 foreach(Buket buket in musterija.KupljeniBuketi) {
                 br_cvijeca=buket.Cvijeće.Count();
                 if(br_cvijeca>max_cvijeca)
@@ -204,10 +205,10 @@ namespace Cvjecara
             }
 
             //zatim pronalazim koliko ima musterija sa maksimalnim brojem cvijeca u buketu
-            //i dodajemo ih u listu najboljih musterija
+            //i dodajem ih u listu najboljih musterija
             int br_musterija=0;
-            List<Mušterija> najbolje_musterije;
-            foreach(Musterija musterija in musterije) {
+            List<Mušterija> najbolje_musterije = new List<Mušterija>();
+            foreach(Mušterija musterija in mušterije) {
                 foreach(Buket buket in musterija.KupljeniBuketi) {
                     if(buket.Cvijeće.Count()==max_cvijeca) {
                         br_musterija++;
@@ -218,28 +219,27 @@ namespace Cvjecara
 
             //vracam jedinu musteriju 
             if(br_musterija==1) {
-                return najbolje_musterije.ElementAt(0);
+                najbolja_musterija = najbolje_musterije.ElementAt(0);
             }
             //ako ima vise od jedne musterije sa istim brojem cvijeca onda trazimo onu musteriju
             //koja je potrosila najvise novca na sve kupljene bukete
             else if(br_musterija>1) {
-            int max_cijena=0;
-                foreach(Musterija musterija in najbolje_musterije) {
-                    int cijena_buketa=0;
+            double max_cijena=0;
+                foreach(Mušterija musterija in najbolje_musterije) {
+                    double cijena_buketa=0;
                     foreach(Buket buket in musterija.KupljeniBuketi) {
-                        cijena_buketa+=buket.cijena;
+                        cijena_buketa+=buket.Cijena;
                     }
                     if(cijena_buketa>max_cijena)
                         max_cijena=cijena_buketa;
                 }
                 //ako ima vise musterija koje su platile istu cijenu bacamo izuzetak 
                 //a ako nema vracamo tu musteriju koja je najvise platila
-                Musterija najbolja_musterija;
                 int brojac_musterija=0;
-                foreach(Musterija musterija in najbolje_musterije) {
-                int cijena_buketa=0;
+                foreach(Mušterija musterija in najbolje_musterije) {
+                double cijena_buketa=0;
                     foreach(Buket buket in musterija.KupljeniBuketi) {
-                        cijena_buketa+=buket.cijena;
+                        cijena_buketa+=buket.Cijena;
                     }
                     if(cijena_buketa==max_cijena) {
                         najbolja_musterija=musterija;
@@ -247,13 +247,13 @@ namespace Cvjecara
                     } 
                     //ako je brojac_musterija=1 onda imamo najbolju musteriju po kriteriju max cijene
                     //a akoje je brojac_musterija>1 onda ih imamo vise i bacamo izuzetak
-                    if(brojac_musterija>1) {
-                        return najbolja_musterija;
-                    } else {
+                    
+                }
+                if(brojac_musterija > 1) {
                         throw new NotImplementedException("Ne moze se odrediti najbolja musterija");
                     }
-                }
             }
+            return najbolja_musterija;
         }
 
         #endregion

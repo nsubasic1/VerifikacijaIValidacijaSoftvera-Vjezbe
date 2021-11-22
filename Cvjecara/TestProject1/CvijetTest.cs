@@ -36,5 +36,25 @@ namespace TestProject1
             Assert.AreEqual(orhideja.OdrediSvježinuCvijeća(), 4.5);
             Assert.AreEqual(ruza.OdrediSvježinuCvijeća(), 4.8);
         }
+
+        // <summary>
+        /// Testiranje ukoliko je svjezina cvijeca manja od 0
+        /// </summary>
+        [TestMethod]
+        public void TestMethod5()
+        {
+            //Radila Medina
+            Cvijet ljiljan= new(Vrsta.Ljiljan, "Ime ljiljana", "Bijela", DateTime.Now.AddDays(-10), 100);
+            Cvijet margareta = new(Vrsta.Margareta, "Ime margarete", "Žuta", DateTime.Now.AddDays(-10), 200);
+            Cvijet neven = new(Vrsta.Neven, "Ime nevena", "Žuta", DateTime.Now.AddDays(-10), 210);
+            Cvijet orhideja = new(Vrsta.Orhideja, "Ime orhideje", "Roza", DateTime.Now.AddDays(-10), 50);
+            Cvijet ruza = new Cvijet(Vrsta.Ruža, "Ime ruze", "Crvena", DateTime.Now.AddDays(-10), 70);
+
+            Assert.AreEqual(ljiljan.OdrediSvježinuCvijeća(), 0);
+            Assert.AreEqual(margareta.OdrediSvježinuCvijeća(), 0);
+            Assert.AreEqual(neven.OdrediSvježinuCvijeća(), 0);
+            Assert.AreEqual(orhideja.OdrediSvježinuCvijeća(), 0);
+            Assert.AreEqual(ruza.OdrediSvježinuCvijeća(), 0);
+        }
     }
 }

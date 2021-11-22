@@ -150,6 +150,20 @@ namespace TestProject1
             cvjećara.DodajBuket(new List<Cvijet> { new Cvijet(Vrsta.Neven, "test", "Žuta", DateTime.Now.AddDays(-1), 1) }, new List<string> { "Slama" }, new Poklon("", 20), 20);
             Assert.AreEqual(20, cvjećara.DajSveBukete()[0].Cijena);
         }
+
+        [TestMethod]
+        public void PregledajCvijeceTest()
+        {
+            //radila Medina
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium bosniacum", "Žuta", DateTime.Now, 10));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Neven, "Lilium bosniacum", "Žuta", DateTime.Now, 10));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Margareta, "Lilium bosniacum", "Žuta", DateTime.Now, 10));
+            Assert.AreEqual(cvjećara.Cvijeće.Count, 3);
+            cvjećara.PregledajCvijeće();
+            //posto je kraj sezone sve kolicine su na 0
+            Assert.AreEqual(cvjećara.Cvijeće.Count, 0);
+        }
     }
     #endregion
 }

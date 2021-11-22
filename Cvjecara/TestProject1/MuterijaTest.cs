@@ -42,5 +42,33 @@ namespace TestProject1
             for (int i = 0; i < 900; i++) mušterija.RegistrujKupovinu(new Buket(2), new Poklon("", 15));
             mušterija.NagradnaKupovina(poklon);
         }
+
+        /// <summary>
+        /// Test izuzetka kada je ukupan broj kupovina manji od 100
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TestMethod3()
+        {
+            //Radila Medina
+            Mušterija mušterijica = new("Medina");
+            Poklon poklončić = new("Lopta", 10);
+            mušterijica.NagradnaKupovina(poklončić);
+        }
+
+        /// <summary>
+        /// Test izuzetka kada poklon nije poslan
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void TestMethod4()
+        {
+            //Radila Medina
+            Mušterija mušterijica = new("Medina");
+            Poklon poklončić = new("Lopta", 10);
+            mušterijica.NagradnaKupovina(null);
+        }
+
+
     }
 }

@@ -18,4 +18,13 @@ namespace Cvjecara
             throw new NotImplementedException();
         }
     }
+
+    public class SpyLeksikon : ILeksikon
+    {
+        public bool ValidnoLatinskoIme(string ime)
+        {
+            if(ime == "Rosa rubiginosa") return true;
+            return false;
+        }
+    }
 }

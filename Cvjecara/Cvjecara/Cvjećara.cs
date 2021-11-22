@@ -101,7 +101,33 @@ namespace Cvjecara
 
         public void IzvršiNabavku(string godišnjeDoba, string veličinaNarudžbe)
         {
-            throw new NotImplementedException();
+            int kol;
+            switch (veličinaNarudžbe)
+            {
+                case "Velika": kol = 100;
+                    break;
+                case "Mala": kol = 10;
+                    break;
+                default: throw new ArgumentException("Ilegalna veličina narudžbe");
+            }
+
+            switch (godišnjeDoba)
+            {
+                case "Proljeće":
+                    cvijeće.Clear();
+                    buketi.Clear();
+                    cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
+                    cvijeće.Add(new Cvijet(Vrsta.Neven, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
+                    cvijeće.Add(new Cvijet(Vrsta.Margareta, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
+                    break;
+                case "Jesen":
+                    cvijeće.Clear();
+                    buketi.Clear();
+                    cvijeće.Add(new Cvijet(Vrsta.Ruža, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
+                    cvijeće.Add(new Cvijet(Vrsta.Orhideja, "Lilium bosniacum", "Žuta", DateTime.Now, kol));
+                    break;
+                default: throw new ArgumentException("Nedozvoljena nabavka ljeti ili zimi");
+            }
         }
 
         public void PregledajCvijeće()

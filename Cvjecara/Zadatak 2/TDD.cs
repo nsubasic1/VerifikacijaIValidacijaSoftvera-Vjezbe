@@ -19,7 +19,7 @@ namespace Zadatak_2
             c.RadSaCvijećem(c1, 0);
             c.RadSaCvijećem(c2, 0);
             
-            Leksikon leksikon = new Leksikon();
+            ILeksikon leksikon = new SpyLeksikon();
             c.ProvjeriLatinskaImenaCvijeća(leksikon);
 
             Assert.AreEqual(c.Cvijeće.Count, 1);

@@ -191,7 +191,7 @@ namespace Cvjecara
             Mušterija najbolja_musterija = null;
             //radila Medina 
             if (mušterije.Count()==0) {
-                throw new NotImplementedException("Cvjecara nema nijednu musteriju!");
+                throw new InvalidOperationException("Cvjecara nema nijednu musteriju!");
             }
 
             //prvo pronalazim koliko je maksimalan broj cvijeca u buketu

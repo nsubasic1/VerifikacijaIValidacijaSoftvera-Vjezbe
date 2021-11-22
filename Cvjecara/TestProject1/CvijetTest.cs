@@ -56,5 +56,28 @@ namespace TestProject1
             Assert.AreEqual(orhideja.OdrediSvježinuCvijeća(), 0);
             Assert.AreEqual(ruza.OdrediSvježinuCvijeća(), 0);
         }
+
+        /// <summary>
+        /// Test izuzetka kada je kolicina cvijeca manja od 1
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void TestMethod6()
+        {
+            //Radila Medina
+            Cvijet cvjetic = new(Vrsta.Margareta, "Margareta", "Bijela", DateTime.Now.AddDays(-3), 0);
+        }
+
+        /// <summary>
+        /// Test provjere kraja sezone
+        /// </summary>
+        [TestMethod]
+        public void TestMethod7()
+        {
+            //Radila Medina
+            Cvijet cvjetic = new(Vrsta.Ruža, "Ruza", "Crvena", DateTime.Now, 5);
+            cvjetic.ProvjeriKrajSezone();
+            Assert.AreEqual(cvjetic.Sezonsko, false);
+        }
     }
 }

@@ -251,7 +251,7 @@ namespace Cvjecara
                     
                 }
                 if(brojac_musterija > 1) {
-                        throw new NotImplementedException("Ne moze se odrediti najbolja musterija");
+                        throw new InvalidOperationException("Ne moze se odrediti najbolja musterija");
                     }
             }
             return najbolja_musterija;

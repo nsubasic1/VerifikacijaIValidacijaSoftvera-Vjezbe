@@ -53,6 +53,26 @@ namespace TestProject1
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void CvjecaraBezMusterijeIzuzetak()
+        {
+            //Radila Kanita
+            Mušterija mušterija = cvjećara.DajNajboljuMušteriju();
+        }
+
+        /// <summary>
+        /// Test koji testira da li se baca izuzetak kada se ne moze odrediti najbolja musterija
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void NajboljaMusterijaIzuzteka()
+        {
+            //Radila Kanita
+            cvjećara.Mušterije.Add(mušterije[1]);
+            cvjećara.Mušterije.Add(mušterije[1]);
+            Mušterija mušterija = cvjećara.DajNajboljuMušteriju();
+        }
+        [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         public void DodavanjeCvijecaIzuzetakNull()
         {

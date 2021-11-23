@@ -69,6 +69,12 @@ namespace TestProject1
             mušterijica.NagradnaKupovina(null);
         }
 
-
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void registrujKupovinuIzuzetak() {
+            //Radila Kanita
+            Mušterija mušterija = new("Kanita");
+            mušterija.RegistrujKupovinu(null, null);
+        }
     }
 }

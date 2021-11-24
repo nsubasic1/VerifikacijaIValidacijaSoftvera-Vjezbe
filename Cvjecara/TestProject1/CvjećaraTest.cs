@@ -165,6 +165,18 @@ namespace TestProject1
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void NaruciCvijeceIzuzetakTest()
+        {
+            //Radila Kanita
+            Mušterija m1 = new Mušterija("m1");
+            Buket b = new Buket(20);
+            cvjećara.NaručiCvijeće(m1, b, null, null);
+        }
+
+
+
+        [TestMethod]
         public void DodajBuketTest()
         {
             cvjećara.DodajBuket(new List<Cvijet> { new Cvijet(Vrsta.Neven, "test", "Žuta", DateTime.Now.AddDays(-1), 1) }, new List<string> { "Slama" }, new Poklon("", 20), 20);

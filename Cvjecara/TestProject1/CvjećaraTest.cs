@@ -174,7 +174,27 @@ namespace TestProject1
             cvjećara.NaručiCvijeće(m1, b, null, null);
         }
 
+        [TestMethod]
+        public void NaruciCvijeceTest()
+        {
+            //Radila Kanita
+            Mušterija m1 = new Mušterija("m1");
+            Poklon p = new Poklon("poklon1", 19);
+            cvjećara.DodajBuket(new List<Cvijet> { new Cvijet(Vrsta.Neven, "test", "Žuta", DateTime.Now.AddDays(-1), 1) }, new List<string> { "Slama" }, new Poklon("", 20), 20);
+            Buket buket = cvjećara.DajSveBukete()[0];
 
+            cvjećara.NaručiCvijeće(m1, buket, p);
+
+            Assert.IsTrue(m1.KupljeniBuketi.Contains(buket));
+            Assert.IsTrue(m1.KupljeniPokloni.Contains(p));
+            Assert.IsTrue(cvjećara.NaručeniPokloni.Contains(p));
+
+            Poklon p1 = new Poklon("poklon2", 10);
+            for (int i = 0; i < 998; i++) m1.RegistrujKupovinu(buket, p);
+
+            cvjećara.NaručiCvijeće(m1, buket, p1, p);
+            Assert.IsTrue(m1.KupljeniPokloni.Contains(p1));
+        }
 
         [TestMethod]
         public void DodajBuketTest()

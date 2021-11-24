@@ -165,6 +165,14 @@ namespace TestProject1
         }
 
         [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void DajNarucenePokloneIzuzetakTest()
+        {
+            Mušterija m1 = new Mušterija("m1");
+            List<Poklon> pokloni = cvjećara.DajSveNaručenePoklone(m1, 10);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void NaruciCvijeceIzuzetakTest()
         {

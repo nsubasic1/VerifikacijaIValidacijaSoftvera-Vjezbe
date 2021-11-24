@@ -76,5 +76,21 @@ namespace TestProject1
             Mušterija mušterija = new("Kanita");
             mušterija.RegistrujKupovinu(null, null);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void setterImePrezimeIzuzetak1()
+        {
+            //Radila Kanita
+            Mušterija mušterija = new Mušterija(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void setterImePrezimeIzuzetak2()
+        {
+            //Radila Kanita
+            Mušterija mušterija = new Mušterija("");
+        }
     }
 }

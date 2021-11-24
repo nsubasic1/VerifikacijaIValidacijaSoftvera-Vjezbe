@@ -1,12 +1,89 @@
-﻿using Cvjecara;
+﻿using CsvHelper;
+using Cvjecara;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Xml;
 
 namespace TestProject1
 {
     [TestClass]
     public class CvijetTest
     {
+        static IEnumerable<object[]> CvijetoviNeispravniPodaciCSV
+        {
+            get
+            {
+                return UčitajPodatkeNeispravneCSV();
+            }
+        }
+        static IEnumerable<object[]> CvijetoviIspravniPodaciCSV
+        {
+            get
+            {
+                return UčitajPodatkeIspravneCSV();
+            }
+        }
+
+        public static IEnumerable<object[]> UčitajPodatkeIspravneCSV()
+        {
+            using (var reader = new StreamReader("CvijetoviNeispravniPodaci.csv"))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var rows = csv.GetRecords<dynamic>();
+                foreach (var row in rows)
+                {
+                    var values = ((IDictionary<String, Object>)row).Values;
+                    var elements = values.Select(elem => elem.ToString()).ToList();
+                    yield return new object[] { elements[0], elements[1], elements[2], DateTime.Parse(elements[3]), elements[4] };
+                }
+            }
+        }
+        public static IEnumerable<object[]> UčitajPodatkeNeispravneCSV()
+        {
+            using (var reader = new StreamReader("CvijetoviNeispravniPodaci.csv"))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var rows = csv.GetRecords<dynamic>();
+                foreach (var row in rows)
+                {
+                    var values = ((IDictionary<String, Object>)row).Values;
+                    var elements = values.Select(elem => elem.ToString()).ToList();
+                    yield return new object[] { elements[0], elements[1], elements[2] ,DateTime.Parse(elements[3]), elements[4]};
+                }
+            }
+        }
+
+        [TestMethod]
+        [DynamicData("CvijetoviNeispravniPodaciCSV")]
+        [ExpectedException(typeof(FormatException))]
+        public void testKonstruktoraNeispravniPodaci(string vrsta, string ime, string boja, DateTime datumBranja, string kol)
+        {
+            //Radila Kanita
+            Cvijet cvijet = new Cvijet(Enum.Parse<Vrsta>(vrsta), ime, boja, datumBranja, Int32.Parse(kol));
+        }
+
+        [TestMethod]
+        [DynamicData("CvijetoviIspravniPodaciCSV")]
+        [ExpectedException(typeof(FormatException))]
+        public void testKonstruktoraIspravniPodaci(string vrsta, string ime, string boja, DateTime datumBranja, string kol)
+        {
+            //Radila Kanita
+            Cvijet cvijet = new Cvijet(Enum.Parse<Vrsta>(vrsta), ime, boja, datumBranja, Int32.Parse(kol));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void testSeteraLatinskoImePromijena()
+        {
+            //Radila Kanita
+            Cvijet cvijet = new Cvijet(Vrsta.Ruža, "Ruža1", "Crvena", DateTime.Now, 10);
+            cvijet.LatinskoIme = "Ruža latinsko ime";
+        }
+
         /// <summary>
         /// Test koji testira da li je iznos svjezine maksimalan kada je proslo manje od 3 dana
         /// </summary>
@@ -55,17 +132,6 @@ namespace TestProject1
             Assert.AreEqual(neven.OdrediSvježinuCvijeća(), 0);
             Assert.AreEqual(orhideja.OdrediSvježinuCvijeća(), 0);
             Assert.AreEqual(ruza.OdrediSvježinuCvijeća(), 0);
-        }
-
-        /// <summary>
-        /// Test izuzetka kada je kolicina cvijeca manja od 1
-        /// </summary>
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
-        public void TestMethod6()
-        {
-            //Radila Medina
-            Cvijet cvjetic = new(Vrsta.Margareta, "Margareta", "Bijela", DateTime.Now.AddDays(-3), 0);
         }
 
         /// <summary>

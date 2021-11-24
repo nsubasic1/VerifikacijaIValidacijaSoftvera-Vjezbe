@@ -20,26 +20,26 @@ namespace TestProject1
                 return UčitajPodatkeNeispravneCSV();
             }
         }
-        static IEnumerable<object[]> CvijetoviIspravniPodaciCSV
+        static IEnumerable<object[]> CvijetoviIspravniPodaciXML
         {
             get
             {
-                return UčitajPodatkeIspravneCSV();
+                return UčitajPodatkeIspravneXML();
             }
         }
 
-        public static IEnumerable<object[]> UčitajPodatkeIspravneCSV()
+        public static IEnumerable<object[]> UčitajPodatkeIspravneXML()
         {
-            using (var reader = new StreamReader("CvijetoviNeispravniPodaci.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            XmlDocument doc = new XmlDocument();
+            doc.Load("CvijetoviIspravniPodaci.xml");
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var rows = csv.GetRecords<dynamic>();
-                foreach (var row in rows)
+                List<string> elements = new List<string>();
+                foreach (XmlNode innerNode in node)
                 {
-                    var values = ((IDictionary<String, Object>)row).Values;
-                    var elements = values.Select(elem => elem.ToString()).ToList();
-                    yield return new object[] { elements[0], elements[1], elements[2], DateTime.Parse(elements[3]), elements[4] };
+                    elements.Add(innerNode.InnerText);
                 }
+                yield return new object[] { elements[0], elements[1], elements[2], DateTime.Parse(elements[3]), elements[4] };
             }
         }
         public static IEnumerable<object[]> UčitajPodatkeNeispravneCSV()
@@ -67,8 +67,7 @@ namespace TestProject1
         }
 
         [TestMethod]
-        [DynamicData("CvijetoviIspravniPodaciCSV")]
-        [ExpectedException(typeof(FormatException))]
+        [DynamicData("CvijetoviIspravniPodaciXML")]
         public void testKonstruktoraIspravniPodaci(string vrsta, string ime, string boja, DateTime datumBranja, string kol)
         {
             //Radila Kanita

@@ -168,6 +168,7 @@ namespace TestProject1
         [ExpectedException(typeof(FormatException))]
         public void DajNarucenePokloneIzuzetakTest()
         {
+            //Radila Kanita
             Mušterija m1 = new Mušterija("m1");
             List<Poklon> pokloni = cvjećara.DajSveNaručenePoklone(m1, 10);
         }

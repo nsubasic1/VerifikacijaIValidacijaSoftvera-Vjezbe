@@ -172,6 +172,17 @@ namespace TestProject1
         }
 
         [TestMethod]
+        public void ObrisiBuketTest()
+        {
+            //Radila Kanita
+            cvjećara.DodajBuket(new List<Cvijet> { new Cvijet(Vrsta.Neven, "test", "Žuta", DateTime.Now.AddDays(-1), 1) }, new List<string> { "Slama" }, new Poklon("", 20), 20);
+            Buket buket = cvjećara.DajSveBukete()[0];
+            cvjećara.ObrišiBuket(buket);
+
+            Assert.IsFalse(cvjećara.DajSveBukete().Contains(buket));
+        }
+
+        [TestMethod]
         public void PregledajCvijeceTest()
         {
             //radila Medina
@@ -184,6 +195,8 @@ namespace TestProject1
             //posto je kraj sezone sve kolicine su na 0
             Assert.AreEqual(cvjećara.Cvijeće.Count, 0);
         }
+
+
     }
     #endregion
 }

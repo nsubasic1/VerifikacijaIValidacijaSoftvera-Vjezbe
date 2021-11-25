@@ -39,7 +39,7 @@ namespace TestProject1
                 {
                     elements.Add(innerNode.InnerText);
                 }
-                yield return new object[] { Enum.Parse<Vrsta>(elements[0]), elements[1], elements[2], DateTime.Parse(elements[3]).Day, DateTime.Parse(elements[3]).Month, DateTime.Parse(elements[3]).Year, Int32.Parse(elements[4])};
+                yield return new object[] { Enum.Parse<Vrsta>(elements[0]), elements[1], elements[2], Int32.Parse(elements[3]), Int32.Parse(elements[4]), Int32.Parse(elements[5]), Int32.Parse(elements[6])};
             }
         }
         public static IEnumerable<object[]> UčitajPodatkeNeispravneCSV()
@@ -52,7 +52,7 @@ namespace TestProject1
                 {
                     var values = ((IDictionary<String, Object>)row).Values;
                     var elements = values.Select(elem => elem.ToString()).ToList();
-                    yield return new object[] { Enum.Parse<Vrsta>(elements[0]), elements[1], elements[2] ,DateTime.Parse(elements[3]).Day, DateTime.Parse(elements[3]).Month, DateTime.Parse(elements[3]).Year, Int32.Parse(elements[4])};
+                    yield return new object[] { Enum.Parse<Vrsta>(elements[0]), elements[1], elements[2] , Int32.Parse(elements[4]), Int32.Parse(elements[3]), Int32.Parse(elements[5]), Int32.Parse(elements[6])};
                 }
             }
         }

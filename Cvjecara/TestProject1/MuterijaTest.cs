@@ -69,6 +69,20 @@ namespace TestProject1
             mušterijica.NagradnaKupovina(null);
         }
 
+        /// <summary>
+        /// Test izuzetka kada postotak nagrade ne odgovara ukupnom broju kupovina
+        /// </summary>
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void TestMethod5()
+        {
+            //Radila Medina
+            Mušterija mušterijica = new("Medina");
+            Poklon poklončić = new("Mašna", 50);
+            for (int i = 0; i < 100; i++) mušterijica.RegistrujKupovinu(new Buket(2), new Poklon("", 15));
+            mušterijica.NagradnaKupovina(poklončić);
+        }
+
         [TestMethod]
         [ExpectedException(typeof(NotSupportedException))]
         public void registrujKupovinuIzuzetak() {

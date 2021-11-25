@@ -136,15 +136,27 @@ namespace TestProject1
         }
 
         /// <summary>
-        /// Test provjere kraja sezone
+        /// Test provjere kraja sezone - da li je cvijece sezonsko
         /// </summary>
         [TestMethod]
         public void TestMethod7()
         {
             //Radila Medina
-            Cvijet cvjetic = new(Vrsta.Ruža, "Ruza", "Crvena", DateTime.Now, 5);
+            Cvijet cvjetic = new(Vrsta.Ruža, "Rosa", "Crvena", DateTime.Now, 5);
             cvjetic.ProvjeriKrajSezone();
             Assert.AreEqual(cvjetic.Sezonsko, false);
+        }
+
+        /// <summary>
+        /// Test provjere kraja sezone - cvijece ubrano van sezone
+        /// </summary>
+        [TestMethod]
+        public void TestMethod8()
+        {
+            //Radila Medina
+            Cvijet cvjetic = new(Vrsta.Margareta, "Chrysanthemum", "Bijela", DateTime.Now.AddDays(-320), 15);
+            cvjetic.ProvjeriKrajSezone();
+            Assert.AreEqual(cvjetic.Kolicina, 0);
         }
     }
 }

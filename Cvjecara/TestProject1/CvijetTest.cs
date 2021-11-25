@@ -39,7 +39,7 @@ namespace TestProject1
                 {
                     elements.Add(innerNode.InnerText);
                 }
-                yield return new object[] { elements[0], elements[1], elements[2], DateTime.Parse(elements[3]), elements[4] };
+                yield return new object[] { Enum.Parse<Vrsta>(elements[0]), elements[1], elements[2], DateTime.Parse(elements[3]).Day, DateTime.Parse(elements[3]).Month, DateTime.Parse(elements[3]).Year, Int32.Parse(elements[4])};
             }
         }
         public static IEnumerable<object[]> UčitajPodatkeNeispravneCSV()
@@ -52,7 +52,7 @@ namespace TestProject1
                 {
                     var values = ((IDictionary<String, Object>)row).Values;
                     var elements = values.Select(elem => elem.ToString()).ToList();
-                    yield return new object[] { elements[0], elements[1], elements[2] ,DateTime.Parse(elements[3]), elements[4]};
+                    yield return new object[] { Enum.Parse<Vrsta>(elements[0]), elements[1], elements[2] ,DateTime.Parse(elements[3]).Day, DateTime.Parse(elements[3]).Month, DateTime.Parse(elements[3]).Year, Int32.Parse(elements[4])};
                 }
             }
         }
@@ -60,18 +60,20 @@ namespace TestProject1
         [TestMethod]
         [DynamicData("CvijetoviNeispravniPodaciCSV")]
         [ExpectedException(typeof(FormatException))]
-        public void testKonstruktoraNeispravniPodaci(string vrsta, string ime, string boja, DateTime datumBranja, string kol)
+        public void testKonstruktoraNeispravniPodaci(Vrsta vrsta, string ime, string boja, int dan,int mjesec, int godina, int kol)
         {
             //Radila Kanita
-            Cvijet cvijet = new Cvijet(Enum.Parse<Vrsta>(vrsta), ime, boja, datumBranja, Int32.Parse(kol));
+            DateTime datumBranja = new DateTime(godina, mjesec, dan);
+            Cvijet cvijet = new Cvijet(vrsta, ime, boja, datumBranja, kol);
         }
 
         [TestMethod]
         [DynamicData("CvijetoviIspravniPodaciXML")]
-        public void testKonstruktoraIspravniPodaci(string vrsta, string ime, string boja, DateTime datumBranja, string kol)
+        public void testKonstruktoraIspravniPodaci(Vrsta vrsta, string ime, string boja, int dan, int mjesec, int godina, int kol)
         {
             //Radila Kanita
-            Cvijet cvijet = new Cvijet(Enum.Parse<Vrsta>(vrsta), ime, boja, datumBranja, Int32.Parse(kol));
+            DateTime datumBranja = new DateTime(godina, mjesec, dan);
+            Cvijet cvijet = new Cvijet(vrsta, ime, boja, datumBranja, kol);
         }
 
         [TestMethod]

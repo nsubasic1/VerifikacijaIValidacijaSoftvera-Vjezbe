@@ -93,6 +93,56 @@ namespace Cvjecara
                 throw new InvalidOperationException("Unijeli ste nepoznatu opciju!");
         }
 
+        //Radila Medina
+        public void RadSaCvijećemTuning1(Cvijet c, int opcija, int minKoličina)
+        {
+            if (opcija == 0)
+            {
+                if (c == null)
+                    throw new NullReferenceException("Nemoguće dodati cvijet koji ne postoji!");
+                else
+                {
+                    foreach (Cvijet cvijet in cvijeće)
+                    {
+                        if (cvijet.LatinskoIme == c.LatinskoIme)
+                        {
+                            if (cvijet.Kolicina < minKoličina * 1000)
+                                continue;
+                            else
+                                throw new InvalidOperationException("Nemoguće dodati cvijet koji već postoji!");
+                        }
+                    }
+                    //Nije doslo do izuzetka znaci da cvijet c ne postoji u listi cvijeca pa ga mozemo dodati
+                    cvijeće.Add(c);
+                }
+            }
+            else if (opcija == 1)
+            {
+                if (c == null)
+                    throw new NullReferenceException("Nemoguće izmijeniti cvijet koji ne postoji!");
+                else if (cvijeće.Find(cvijet => cvijet.LatinskoIme == c.LatinskoIme) == null)
+                    throw new InvalidOperationException("Nemoguće izmijeniti cvijet koji ne postoji!");
+                else
+                {
+                    cvijeće.Remove(cvijeće.Find(cvijet => cvijet.LatinskoIme == c.LatinskoIme));
+                    cvijeće.Add(c);
+                }
+            }
+            else if (opcija == 2)
+            {
+                if (c == null)
+                    throw new NullReferenceException("Nemoguće obrisati cvijet koji ne postoji!");
+                else if (cvijeće.Find(cvijet => cvijet.LatinskoIme == c.LatinskoIme) == null)
+                    throw new InvalidOperationException("Nemoguće obrisati cvijet koji ne postoji!");
+                else
+                {
+                    cvijeće.Remove(cvijeće.Find(cvijet => cvijet.LatinskoIme == c.LatinskoIme));
+                }
+            }
+            else
+                throw new InvalidOperationException("Unijeli ste nepoznatu opciju!");
+        }
+
         public void DodajBuket(List<Cvijet> cvijeće, List<string> dodaci, Poklon poklon, double cijena)
         {
             Buket b = new Buket(cijena);
@@ -164,5 +214,24 @@ namespace Cvjecara
         }
 
         #endregion
+    }
+
+    [TestClass]
+    public class CvjećaraTest
+    {
+        [TestMethod]
+        public void TestTuning()
+        {
+            Cvjećara klasa = new Cvjećara();
+            for (int i = 0; i < 10000000; i++)
+                klasa.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosa", "Crvena", DateTime.Now.AddDays(-1), 1));
+            Cvijet c=new Cvijet(Vrsta.Orhideja, "Orchid", "Crvena", DateTime.Now.AddDays(-1), 1)
+            //prvi breakpoint prije poziva metode
+            int x = 0;
+            klasa.RadSaCvijećemTuning1(c, 0, 1);
+            int y = 0;
+
+            Assert.IsTrue(true);
+        }
     }
 }

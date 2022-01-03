@@ -320,6 +320,17 @@ namespace Cvjecara
             cvijeće.RemoveAll(cvijet => cvijet.Kolicina == 0);
         }
 
+        //Radila Kanita
+        public void PregledajCvijećeRefaktoring()
+        {
+            foreach (Cvijet cvijet in cvijeće)
+            {
+                cvijet.ProvjeriKrajSezone();
+            }
+
+            cvijeće.RemoveAll(cvijet => cvijet.Kolicina == 0 || cvijet.DatumBranja.AddDays(7) <= DateTime.Now);
+        }
+
         public void NaručiCvijeće(Mušterija m, Buket b, Poklon p)
         {
             if (!buketi.Contains(b))

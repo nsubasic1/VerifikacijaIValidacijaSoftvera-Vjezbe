@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Cvjecara
 {
@@ -182,7 +183,7 @@ namespace Cvjecara
                 {
                     cvijeće.Remove(cvijeće.Find(cvijet => {
                         string datoIme = c.LatinskoIme;
-                        string pronadjenoIme = cvijet.LatinskoIme; 
+                        string pronadjenoIme = cvijet.LatinskoIme;
                         return datoIme == pronadjenoIme}));
                     cvijeće.Add(c);
                 }
@@ -290,10 +291,11 @@ namespace Cvjecara
             Cvjećara klasa = new Cvjećara();
             for (int i = 0; i < 10000000; i++)
                 klasa.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosa", "Crvena", DateTime.Now.AddDays(-1), 1));
-            Cvijet c=new Cvijet(Vrsta.Orhideja, "Orchid", "Crvena", DateTime.Now.AddDays(-1), 1)
+            Cvijet c = new Cvijet(Vrsta.Orhideja, "Orchidaceae", "Crvena", DateTime.Now.AddDays(-1), 1);
             //prvi breakpoint prije poziva metode
             int x = 0;
-            klasa.RadSaCvijećemTuning1(c, 0, 1);
+            //prije tuninga
+            klasa.RadSaCvijećem(c, 0, 1);
             int y = 0;
 
             Assert.IsTrue(true);

@@ -18,8 +18,6 @@ namespace TestProject
             int x = 0;
             //prije tuninga
             klasa.RadSaCvijećem(c, 0, 1);
-            klasa.RadSaCvijećem(c, 1, 1);
-            klasa.RadSaCvijećem(c, 2, 1);
             int y = 0;
 
             Assert.IsTrue(true);

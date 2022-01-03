@@ -213,6 +213,80 @@ namespace Cvjecara
                 throw new InvalidOperationException("Unijeli ste nepoznatu opciju!");
         }
 
+        //Radila Kanita
+        public void RadSaCvijećemTuning3(Cvijet c, int opcija, int minKoličina)
+        {
+            if (opcija == 0)
+            {
+                if (c == null)
+                    throw new NullReferenceException("Nemoguće dodati cvijet koji ne postoji!");
+                else
+                {
+                    foreach (Cvijet cvijet in cvijeće)
+                    {
+                        string datoIme = c.LatinskoIme;
+                        string pronadjenoIme = cvijet.LatinskoIme;
+                        if (datoIme == pronadjenoIme)
+                        {
+                            int kolicina = cvijet.Kolicina;
+                            int min = 0;
+                            for (int i = 0; i < 1000; i++)
+                            {
+                                min += minKoličina; 
+                            }
+
+                            if (kolicina < min)
+                                continue;
+                            else
+                                throw new InvalidOperationException("Nemoguće dodati cvijet koji već postoji!");
+                        }
+                    }
+                    cvijeće.Add(c);
+                }
+            }
+            else if (opcija == 1)
+            {
+                if (c == null)
+                    throw new NullReferenceException("Nemoguće izmijeniti cvijet koji ne postoji!");
+                else if (cvijeće.Find(cvijet => {
+                    string datoIme = c.LatinskoIme;
+                    string pronadjenoIme = cvijet.LatinskoIme;
+                    return datoIme == pronadjenoIme;
+                }) == null)
+                    throw new InvalidOperationException("Nemoguće izmijeniti cvijet koji ne postoji!");
+                else
+                {
+                    cvijeće.Remove(cvijeće.Find(cvijet => {
+                        string datoIme = c.LatinskoIme;
+                        string pronadjenoIme = cvijet.LatinskoIme;
+                        return datoIme == pronadjenoIme;
+                    }));
+                    cvijeće.Add(c);
+                }
+            }
+            else if (opcija == 2)
+            {
+                if (c == null)
+                    throw new NullReferenceException("Nemoguće obrisati cvijet koji ne postoji!");
+                else if (cvijeće.Find(cvijet => {
+                    string datoIme = c.LatinskoIme;
+                    string pronadjenoIme = cvijet.LatinskoIme;
+                    return datoIme == pronadjenoIme;
+                }) == null)
+                    throw new InvalidOperationException("Nemoguće obrisati cvijet koji ne postoji!");
+                else
+                {
+                    cvijeće.Remove(cvijeće.Find(cvijet => {
+                        string datoIme = c.LatinskoIme;
+                        string pronadjenoIme = cvijet.LatinskoIme;
+                        return datoIme == pronadjenoIme;
+                    }));
+                }
+            }
+            else
+                throw new InvalidOperationException("Unijeli ste nepoznatu opciju!");
+        }
+
         public void DodajBuket(List<Cvijet> cvijeće, List<string> dodaci, Poklon poklon, double cijena)
         {
             Buket b = new Buket(cijena);

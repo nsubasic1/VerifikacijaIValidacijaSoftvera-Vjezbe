@@ -7,6 +7,7 @@ namespace TestProject
     [TestClass]
     public class UnitTest1
     {
+        [TestMethod]
         public void TestTuning()
         {
             Cvjećara klasa = new Cvjećara();

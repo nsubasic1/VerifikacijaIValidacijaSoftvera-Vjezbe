@@ -176,15 +176,17 @@ namespace Cvjecara
                     throw new NullReferenceException("Nemoguće izmijeniti cvijet koji ne postoji!");
                 else if (cvijeće.Find(cvijet => {
                         string datoIme = c.LatinskoIme;
-                        string pronadjenoIme = cvijet.LatinskoIme; 
-                        return datoIme == pronadjenoIme}) == null)
+                        string pronadjenoIme = cvijet.LatinskoIme;
+                    return datoIme == pronadjenoIme;
+                }) == null)
                     throw new InvalidOperationException("Nemoguće izmijeniti cvijet koji ne postoji!");
                 else
                 {
                     cvijeće.Remove(cvijeće.Find(cvijet => {
                         string datoIme = c.LatinskoIme;
                         string pronadjenoIme = cvijet.LatinskoIme;
-                        return datoIme == pronadjenoIme}));
+                        return datoIme == pronadjenoIme;
+                    }));
                     cvijeće.Add(c);
                 }
             }
@@ -194,15 +196,17 @@ namespace Cvjecara
                     throw new NullReferenceException("Nemoguće obrisati cvijet koji ne postoji!");
                 else if (cvijeće.Find(cvijet => {
                         string datoIme = c.LatinskoIme;
-                        string pronadjenoIme = cvijet.LatinskoIme; 
-                        return datoIme == pronadjenoIme}) == null)
+                        string pronadjenoIme = cvijet.LatinskoIme;
+                    return datoIme == pronadjenoIme;
+                }) == null)
                     throw new InvalidOperationException("Nemoguće obrisati cvijet koji ne postoji!");
                 else
                 {
-                    cvijeće.Remove(cvijeće.Find({
+                    cvijeće.Remove(cvijeće.Find(cvijet => {
                         string datoIme = c.LatinskoIme;
-                        string pronadjenoIme = cvijet.LatinskoIme; 
-                        return datoIme == pronadjenoIme}));
+                        string pronadjenoIme = cvijet.LatinskoIme;
+                        return datoIme == pronadjenoIme;
+                    }));
                 }
             }
             else
@@ -291,7 +295,7 @@ namespace Cvjecara
             Cvjećara klasa = new Cvjećara();
             for (int i = 0; i < 10000000; i++)
                 klasa.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosa", "Crvena", DateTime.Now.AddDays(-1), 1));
-            Cvijet c = new Cvijet(Vrsta.Orhideja, "Orchidaceae", "Crvena", DateTime.Now.AddDays(-1), 1);
+            Cvijet c = new Cvijet(Vrsta.Orhideja, "Orchid", "Crvena", DateTime.Now.AddDays(-1), 1);
             //prvi breakpoint prije poziva metode
             int x = 0;
             //prije tuninga

@@ -358,6 +358,21 @@ namespace Cvjecara
             else
                 return;
         }
+        
+        //radila Medina
+        public void ProvjeriLatinskaImenaCvijećaRefaktoring()
+        {
+            for (int i = 0; i < cvijeće.Count; i++)
+            {
+                String latIme = cvijeće[i].LatinskoIme;
+                if (cvijeće[i].Vrsta == Vrsta.Ruža && latIme != "Rosa" || latIme != "Lilium" && latIme != "Calendula" &&
+                         latIme != "Orchidacea" && latIme != "Leucanthemum") 
+                    cvijeće.RemoveAll(cvijet => cvijet==cvijeće[i]);
+            }
+            
+            if (cvijeće.Count == 0)
+                throw new ArgumentException("Obrisano je svo cvijeće iz kolekcije!");
+        }
 
         public List<Poklon> DajSveNaručenePoklone(Mušterija m, double popust)
         {

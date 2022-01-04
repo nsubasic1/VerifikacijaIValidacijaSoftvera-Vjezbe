@@ -298,6 +298,16 @@ namespace Cvjecara
             buketi.Add(b);
         }
 
+        //radila Nejla
+        public void DodajBuketRefaktoring(List<Cvijet> cvijeće, List<string> dodaci, Poklon poklon, double cijena)
+        {
+            Buket b = new Buket(cijena);
+            b.DodajPoklon(poklon);
+            b.Cvijeće.AddRange(cvijeće);
+            b.Dodaci.AddRange(dodaci);
+            buketi.Add(b);
+        }
+
         public bool ObrišiBuket(Buket b)
         {
             return buketi.Remove(b);

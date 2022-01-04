@@ -362,14 +362,12 @@ namespace Cvjecara
         //radila Medina
         public void ProvjeriLatinskaImenaCvijećaRefaktoring()
         {
-            for (int i = 0; i < cvijeće.Count; i++)
-            {
-                String latIme = cvijeće[i].LatinskoIme;
-                cvijeće.RemoveAll(cvijet => cvijeće[i].Vrsta == Vrsta.Ruža && latIme != "Rosa" ||
-                latIme != "Lilium" && latIme != "Calendula" &&
-                latIme != "Orchidacea" && latIme != "Leucanthemum");
-            }
-          
+            List<Cvijet> zaObrisati = cvijeće.FindAll(cvijet => cvijet.Vrsta == Vrsta.Ruža && cvijet.LatinskoIme != "Rosa"
+            || cvijet.LatinskoIme != "Lilium" && cvijet.LatinskoIme != "Calendula" &&
+               cvijet.LatinskoIme != "Orchidacea" && cvijet.LatinskoIme != "Leucanthemum");  
+            
+            cvijeće.RemoveAll(cvijet => zaObrisati.Contains(cvijet));
+
             if (cvijeće.Count == 0)
                 throw new ArgumentException("Obrisano je svo cvijeće iz kolekcije!");
         }

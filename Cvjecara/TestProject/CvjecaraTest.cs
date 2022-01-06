@@ -109,6 +109,37 @@ namespace TestProject
             cvjećara.ProvjeriLatinskaImenaCvijeća();
             Assert.AreEqual(4, cvjećara.Cvijeće.Count);
         }
-        #endregion 
+        #endregion
+
+        #region MedininiTestovi
+        //Obuhvat uslova
+        //koristena je logika dodavanja cvjetova iz podzadatka "Testni slučajevi za postizanje potpunog obuhvata linija koda"
+        [TestMethod]
+        public void TestUslova1()
+        {
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosalia", "Crvena", DateTime.Now, 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosa", "Bijela", DateTime.Now, 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Bijela", DateTime.Now, 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Neven, "Calendula", "Žuta", DateTime.Now, 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Orhideja, "Orchidacea", "Bijela", DateTime.Now, 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Margareta, "Leucanthemum", "Bijela", DateTime.Now, 1));
+
+            cvjećara.ProvjeriLatinskaImenaCvijeća();
+            //lista cvijeca nije prazna
+            Assert.AreEqual(4, cvjećara.Cvijeće.Count);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestUslova2()
+        {
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosalia", "Crvena", DateTime.Now, 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ruža, "Rosa", "Bijela", DateTime.Now, 1));
+            //lista cvijeca je prazna
+            cvjećara.ProvjeriLatinskaImenaCvijeća();
+        }
+        #endregion
     }
 }

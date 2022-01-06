@@ -104,6 +104,16 @@ namespace TestProject
             Cvjećara cvjećara = new Cvjećara();
             cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
             cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.ProvjeriLatinskaImenaCvijeća();
+            Assert.AreEqual(2, cvjećara.Cvijeće.Count);
+        }
+
+        [TestMethod]
+        public void TestPetlji4()
+        {
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
             cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
             cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
             cvjećara.ProvjeriLatinskaImenaCvijeća();

@@ -26,7 +26,7 @@ namespace TestProject
 
             Assert.IsTrue(true);
         }
-
+        #region Kanitini testovi
         //Testovi vezani za obuhvat odluka
         //Radila Kanita
 
@@ -75,5 +75,40 @@ namespace TestProject
 
             Assert.IsTrue(cvjećara.Cvijeće.Count != 0);
         }
+        #endregion
+
+        #region NejliniTestovi
+
+        //Testovi obuhvata petlji
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestPetlji1()
+        {
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.ProvjeriLatinskaImenaCvijeća();
+        }
+        
+        [TestMethod]
+        public void TestPetlji2()
+        {
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.ProvjeriLatinskaImenaCvijeća();
+            Assert.AreEqual(1, cvjećara.Cvijeće.Count);
+        }
+
+        [TestMethod]
+        public void TestPetlji3()
+        {
+            Cvjećara cvjećara = new Cvjećara();
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.Cvijeće.Add(new Cvijet(Vrsta.Ljiljan, "Lilium", "Crvena", DateTime.Now.AddDays(-1), 1));
+            cvjećara.ProvjeriLatinskaImenaCvijeća();
+            Assert.AreEqual(4, cvjećara.Cvijeće.Count);
+        }
+        #endregion 
     }
 }

@@ -38,7 +38,7 @@
                 <span asp-validation-for="Lokacija" class="text-danger"></span>
                 <button style="margin-top: 5%; margin-left: 35%" 
                 onclick="return confirm(provjeriLokaciju(document.getElementById('trajanje'), document.getElementById('lokacija')));"
-                class="btn btn-primary">Provjeri</button>
+                class="btn btn-primary" id="BtnProvjeri">Provjeri</button>
             </div>
             <div class="form-group">
                 <label asp-for="DatumAktivnosti" class="control-label"></label>
